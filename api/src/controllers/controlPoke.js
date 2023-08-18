@@ -4,7 +4,7 @@ const { Pokemons, Types } = require('../db')
 // FUNCTION TO GET ALL INFORMATION FROM API 
 const getApiInfo = async () => {
     try {
-        const apiURL = await axios.get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20', {timeout: 10000})
+        const apiURL = await axios.get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100', {timeout: 10000})
         const pokeProm = []
         apiURL.data.results.forEach((pkmn) => {
             pokeProm.push(axios.get(pkmn.url).then((res) => res.data))
@@ -25,8 +25,7 @@ const getApiInfo = async () => {
             }));
         return await infoApi
     } catch (error) {
-        console.error('Error en getApiInfo:', error);
-        throw new Error('No se pudo obtener la información de la API');
+        return error.message
     }
 };
 
@@ -47,7 +46,7 @@ const getDbInfo = async () => {
 const getAllInfo = async () => {
     const apiInfo = await getApiInfo();
     const dbInfo = await getDbInfo();
-    const infoFinal = apiInfo.concat(dbInfo);
+    const infoFinal = dbInfo.concat(apiInfo);
     return infoFinal;
 };
 

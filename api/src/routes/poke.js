@@ -12,13 +12,17 @@ routerPoke.get('/', async (req, res) => {
         const pkName = pokeTotal.filter(pk => pk.name.toLowerCase().includes(name.toLowerCase()))
         //uso el includes para hacer una busqueda mas global, porque si uso === en el lado del front que mandarle el nombre completo
         //if(pkName.length) res.status(200).send(pkName)
-        pkName.length ? res.status(200).send(pkName) : res.status(404).send({ error: `Pokemon with name: ${name} not found`})
+        if(pkName.length) {
+          return res.status(200).json(pkName)
+        } else {
+          return res.status(404).json({ error: `Pokemon with name: ${name} not found`})
+        }
       } 
-      else {
-        res.status(200).send(pokeTotal)
+      else { 
+        return res.status(200).json(pokeTotal)
       }
     } catch (error) {
-      res.status(404).send(error.message)
+      return res.status(404).send(error.message)
     }
   });
 
@@ -32,7 +36,7 @@ routerPoke.get('/:id', async (req, res) => {
     } else {
       pkmn = await getPokeByIdApi(id)
     }
-    if(pkmn) return res.status(200).send(pkmn)
+    if(pkmn) return res.status(200).json(pkmn)
     //res.status(404).send({error: `Pokemonn with id: ${id} not found`})
   } catch (error) {
     return res.status(404).send(error.message)
@@ -42,29 +46,36 @@ routerPoke.get('/:id', async (req, res) => {
 //ruta post 
 
 routerPoke.post('/', async (req, res) =>{
-  let {
-    name,
-    image,
-    health,
-    attack,
-    defense,
-    createdInDb,
-    types
-  } = req.body;
+  try {
+    let {
+      name,
+      image,
+      health,
+      attack,
+      defense,
+      createdInDb,
+      types
+    } = req.body;
+    
+    let typeDb = await Types.findAll({ where: {name: types}});
   
-  let typeDb = await Types.findAll({ where: {name: types}});
-
-  let pkCreate = await Pokemons.create({
-    name,
-    image,
-    health,
-    attack,
-    defense,
-    createdInDb
-  });
-
-  await pkCreate.addTypes(typeDb)
-  res.status(200).send('Pokemon created!')
+    let pkCreate = await Pokemons.create({
+      name,
+      image,
+      health,
+      attack,
+      defense,
+      createdInDb
+    });
+  
+    await pkCreate.addTypes(typeDb)
+    return res.status(200).json({
+      message: "Pokemon created!",
+      pkCreate
+    })
+  } catch (error) {
+    return res.status(400).send(error.message)
+  }
 });
 
 module.exports = routerPoke;

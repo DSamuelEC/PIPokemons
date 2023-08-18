@@ -1,31 +1,29 @@
 import axios from 'axios';
-import { GET_ALL_POKEMONS, GET_POKEMON_BY_ID, CLEAN_DETAIL_STATE, GET_BY_NAME, ACTION_ORDER, ACTION_FILTER_ORIGIN } from './action-types';
+import { GET_ALL_POKEMONS, GET_POKEMON_BY_ID, CLEAN_DETAIL_STATE, GET_BY_NAME, ACTION_ORDER, ACTION_FILTER_ORIGIN, ACTION_FILTER_TYPES, GET_TYPES, SET_PAGE, CREATE_POKEMON } from './action-types';
 
 export const getPokemons = () => {
     return async function(dispatch){
         const inf = await axios('http://localhost:3001/pokemons');
-        console.log(inf);
         return dispatch({
             type: GET_ALL_POKEMONS,
             payload: inf.data
         })
     }
-}
-//http://localhost:3001/pokemons/1
+};
+
 export const getPokeById = (id) => {
     return async function(dispatch){
         const info = await axios(`http://localhost:3001/pokemons/${id}`)
-        console.log(info);
         return dispatch({
             type: GET_POKEMON_BY_ID,
             payload: info.data
         })
     }
-}
+};
 
 export const cleanDetail = () => {
     return { type: CLEAN_DETAIL_STATE }
-}
+};
 
 export const getName = (name) => {
     return async function(dispatch){
@@ -53,4 +51,38 @@ export const filterOrigin = (payload) => {
         type: ACTION_FILTER_ORIGIN,
         payload
     }
-}
+};
+
+export const filterTypes = (payload) => {
+    return {
+        type: ACTION_FILTER_TYPES,
+        payload
+    }
+};
+
+export const getTypes = () => {
+    return async function(dispatch){
+        const inf = await axios('http://localhost:3001/types');
+        return dispatch({
+            type: GET_TYPES,
+            payload: inf.data
+        })
+    }
+};
+
+export const setPage = (payload) => {
+    return { 
+        type: SET_PAGE,
+        payload
+    }
+};
+
+export const createPokemon = (newPk) => {
+    return async function(dispatch){
+        const inf = await axios.post('http://localhost:3001/pokemons', newPk);
+        return dispatch({
+            type: CREATE_POKEMON,
+            payload: inf.data.pkCreate
+        })
+    }
+};

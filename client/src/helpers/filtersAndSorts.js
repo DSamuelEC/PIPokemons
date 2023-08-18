@@ -1,4 +1,4 @@
-export const handler = (sort, filterOrigin, pokemons) =>{
+export const handler = (sort, filterOrigin, filterType, pokemons) =>{
     let info = [...pokemons]
     if(sort === 'A-Z'){
         info.sort((a,b) => a.name.localeCompare(b.name))
@@ -14,12 +14,17 @@ export const handler = (sort, filterOrigin, pokemons) =>{
     }
     if(filterOrigin === 'Db'){
         info = info.filter(el => {
-            el.hasOwnProperty('createdInDb')
+            return el.hasOwnProperty('createdInDb')
         })
     }
     if(filterOrigin ==='Api'){
         info = info.filter(el => {
-            (typeof el.id === 'number')
+            return typeof el.id === 'number'
+        })
+    }
+    if(filterType !== ''){
+        info = info.filter(el => {
+            return el.types.some((type) => type.name === filterType)
         })
     }
     return info

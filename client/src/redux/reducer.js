@@ -1,11 +1,13 @@
-import { GET_ALL_POKEMONS, GET_POKEMON_BY_ID, CLEAN_DETAIL_STATE, GET_BY_NAME, ACTION_ORDER, ACTION_FILTER_ORIGIN } from './action-types';
+import { GET_ALL_POKEMONS, GET_POKEMON_BY_ID, CLEAN_DETAIL_STATE, GET_BY_NAME, ACTION_ORDER, ACTION_FILTER_ORIGIN, ACTION_FILTER_TYPES, GET_TYPES, SET_PAGE, CREATE_POKEMON } from './action-types';
 
 const initialState = {
     pokemons: [],
     pokemonDetail: {},
     sort: '',
     filterOrigin: '',
-    //filterType: ''
+    filterType: '',
+    types: [],
+    pages: 0
 }
 
 const reducer = (state = initialState, action) => {
@@ -45,6 +47,30 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 filterOrigin: action.payload
                 
+            }
+
+        case ACTION_FILTER_TYPES: 
+            return {
+                ...state,
+                filterType: action.payload
+            }
+
+        case GET_TYPES: 
+            return {
+                ...state,
+                types: action.payload
+            }
+
+        case SET_PAGE:
+            return{
+                ...state,
+                pages: action.payload
+            }
+
+        case CREATE_POKEMON: 
+            return{
+                ...state,
+                pokemons: [...state.pokemons, action.payload]
             }
 
         default:

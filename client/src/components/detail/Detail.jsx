@@ -20,7 +20,7 @@ const Detail = () =>{
             <h2>Types: {pokeDetail?.types?.map((type) => type.name).join(" - ")}</h2>
             <h2>Attack: {pokeDetail.attack}</h2>
             <h2>Defense: {pokeDetail.defense}</h2>
-            <h2>Health: {pokeDetail.healt}</h2>
+            <h2>Health: {pokeDetail.health}</h2>
 
         </div>
     )

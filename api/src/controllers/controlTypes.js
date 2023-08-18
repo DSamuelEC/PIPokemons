@@ -13,7 +13,7 @@ const getTypes = async () => {
         const allTypes = await Types.findAll();
         return allTypes
     } catch (error) {
-        console.error('Error en getTypes:', error);
+        return error.message
     };
 };
 
