@@ -39,6 +39,7 @@ export default function Pokemons() {
                             name={pkmn.name}
                             types={pkmn.types}
                             image={pkmn.image}
+                            dueño={pkmn.dueño}
                         />
                     )
                 })

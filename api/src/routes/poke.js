@@ -54,7 +54,8 @@ routerPoke.post('/', async (req, res) =>{
       attack,
       defense,
       createdInDb,
-      types
+      types,
+      dueño
     } = req.body;
     
     let typeDb = await Types.findAll({ where: {name: types}});
@@ -65,7 +66,8 @@ routerPoke.post('/', async (req, res) =>{
       health,
       attack,
       defense,
-      createdInDb
+      createdInDb,
+      dueño
     });
   
     await pkCreate.addTypes(typeDb)

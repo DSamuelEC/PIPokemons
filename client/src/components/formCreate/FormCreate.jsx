@@ -1,12 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createPokemon } from "../../redux/actions";
+import { createPokemon, getTypes } from "../../redux/actions";
 import { useNavigate } from "react-router-dom"
 
 const Form = () => {
     const types = useSelector((state) => state.types);
     const dispatch = useDispatch()
-    const navigate = useNavigate()
 
     const [aux, setAux] = useState('')
 
@@ -16,7 +15,8 @@ const Form = () => {
         health: '',
         attack: '',
         defense: '',
-        types: []
+        types: [],
+        dueño: ''
     })
 
     const handleChange = (event) => {
@@ -32,7 +32,7 @@ const Form = () => {
                 ...pokemon,
                 types: [...pokemon.types, event.target.value]
             })
-            setAux('')
+            setAux(event.target.value)
         }
     }
 
@@ -67,10 +67,14 @@ const Form = () => {
                 <label htmlFor="defense">Defense: </label>
                 <input type="text" name="defense" value={pokemon.defense} onChange={handleChange} />
 
+                <label htmlFor="dueño">Dueño </label>
+                <input type="text" name="dueño" value={pokemon.dueño} onChange={handleChange} />
+
                 <label htmlFor="types">Types: </label>
                 <select name="types" id="type" value={aux} onChange={handleType}>
                     {
                         types.map(el => {
+                            console.log(types)
                             return (
                                 <option value={el.name} key={el.id}>{el.name}</option>
                             )
