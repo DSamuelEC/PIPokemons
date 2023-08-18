@@ -12,7 +12,7 @@ export default function Home() {
 
     useEffect(() => {
         dispatch(getPokemons());
-    }, [])
+    }, []);
 
     return (
         <div>
@@ -26,5 +26,5 @@ export default function Home() {
             <h1>POKEMOOONS:</h1>
             <Pokemons />
         </div>
-    )
-}
+    );
+};

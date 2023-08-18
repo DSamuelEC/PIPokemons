@@ -9,7 +9,7 @@ export default function Pokemons() {
     const { pokemons, sort, filterOrigin, filterType, pages} = useSelector((state) => state);
     const [allPokemons, setAllPokemons] = useState([...pokemons]);
     const dispatch = useDispatch();
-
+//pages
     const nextPage = () => {
         dispatch(setPage(pages + 1))
     };
@@ -18,14 +18,15 @@ export default function Pokemons() {
         dispatch(setPage(Math.max(pages -1, 0)))
     };
 
-    const num = 12
-    const start = pages * num 
-    const end = start + num
-    const totalPages = Math.ceil(allPokemons.length / num)
+    const num = 12;
+    const start = pages * num; 
+    const end = start + num;
+    const totalPages = Math.ceil(allPokemons.length / num);
+//
     useEffect(()=>{
         const filtered = handler(sort, filterOrigin, filterType, pokemons)
         setAllPokemons(filtered)
-    },[pokemons, sort, filterOrigin, filterType])
+    },[pokemons, sort, filterOrigin, filterType]);
     
     return (
         <div className="Pks">

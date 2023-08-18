@@ -3,9 +3,11 @@ import { orderAction } from "../../redux/actions";
 
 export default function Sort() {
     const dispatch = useDispatch();
+
     const handlerSelect = (event) => {
         dispatch(orderAction(event.target.value))
-    }
+    };
+
     return (
         <div>
             <select onChange={handlerSelect}>
@@ -15,5 +17,5 @@ export default function Sort() {
                 <option value="M">Menor ataque</option>
             </select>
         </div>
-    )
-}
+    );
+};

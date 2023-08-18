@@ -21,9 +21,9 @@ const SearchBar = () => {
             <input 
             type="text"
             value={word}
-            onChange={ (event)=> handlerChange(event) }
+            onChange={ handlerChange }
             />
-            <button type="submit" onClick={ (event)=> handlerSubmit(event) }>SEARCH</button>
+            <button type="submit" onClick={ handlerSubmit }>SEARCH</button>
         </div>
     )
 }
