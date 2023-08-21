@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getTypes } from '../../redux/actions';
+import './Landing.styles.css'
 
 export default  function Landing() {
   const dispatch = useDispatch();
@@ -12,13 +13,13 @@ export default  function Landing() {
   },[]);
 
   return (
-    <div>
-      <div>
-        <p>div contenedor del boton de Join</p>
+    <div className='container'>
+      
+        <h1 className='title'>¡Bienvenido! Ingresa para ver pokemons</h1>
         <button>
-          <Link to='/home'>Lets Go Home!</Link>
+          <Link to='/home'>¡Vamos!</Link>
         </button>
-      </div>
+      
     </div>
   );
 };

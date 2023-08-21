@@ -1,8 +1,33 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .Pk {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-    background-color: #f9f9f9;
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-  }
+  background-color: #fff;
+  border: 5px solid #ddd;
+  padding: 5%;
+  /* Ajusta el espaciado interno de la tarjeta */
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Tamaño más pequeño para las tarjetas */
+  width: 60%;
+  /* Ajusta el ancho según tus necesidades */
+  height: 80%;
+  /* Ajusta la altura según tus necesidades */
+  /* Opcionalmente, puedes reducir el tamaño del texto también */
+  font-size: 12px;
+  /* Ajusta el tamaño de fuente según tus necesidades */
+  /* Estilos adicionales para las cartas */
+}
+
+.Pk img {
+  max-width: 100%;
+  /* Reducirá el ancho máximo de la imagen al ancho de su contenedor (.card) */
+  max-height: 100px;
+  /* Ajusta la altura máxima según tus necesidades */
+  display: block;
+  /* Elimina el espacio adicional debajo de la imagen */
+  margin: 0 auto;
+  /* Centra horizontalmente la imagen en su contenedor */
+}

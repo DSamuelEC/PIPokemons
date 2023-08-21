@@ -1,8 +1,16 @@
+body {
+    margin: 20px;
+    padding: 0;
+}
+
 .Pks {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(2, auto);
-    gap: 40px;
-    justify-items: center;
-    margin-top: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 columnas en la cuadrícula */
+    gap: 50px;
+    /* Espacio entre las cartas */
+    justify-content: center;
+    /* Centra horizontalmente las tarjetas en la cuadrícula */
+    align-items: center;
+    /* Centra verticalmente las tarjetas en la cuadrícula */
 }

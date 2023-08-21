@@ -3,7 +3,7 @@ import Landing from './screen/landingPage/Landing.jsx';
 import FormCreate from './components/formCreate/FormCreate.jsx'
 import Home from './components/home/Home.jsx';
 import Detail from './components/detail/Detail.jsx';
-import './App.css'
+//import './App.css'
 
 function App() {
 

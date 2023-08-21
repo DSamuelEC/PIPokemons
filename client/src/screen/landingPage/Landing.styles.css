@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-image: url('https://www.pixelstalk.net/wp-content/uploads/images6/Pokemon-Wallpaper-4K-HD-Free-download.jpg');
+    background-size: cover;
+    background-position: center;
+
+
+    /* Ajusta las dimensiones del div */
+    width: 100%;
+    /* Porcentaje o valor en px */
+    height: 100vh;
+    /* Altura en viewport height (vh) o valor en px */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-size: 24px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button a {
+    color: white;
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
